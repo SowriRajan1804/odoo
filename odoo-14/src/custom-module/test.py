@@ -1,2 +1,2 @@
 print("Im Arul Raj Legend")
-print("by sivaprakasha")
+print("by sivaprakash")
