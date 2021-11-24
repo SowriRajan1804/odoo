@@ -1,2 +1,5 @@
-print("Hello world")
-print("Im Arul Legend")
+a=2
+b=3
+c=a+b
+print("c")
+
