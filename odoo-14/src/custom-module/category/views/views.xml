@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="category.list">
+            <field name="name">category list</field>
+            <field name="model">category.category</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="category.form">
+            <field name="name">category form</field>
+            <field name="model">category.category</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="movies_inherit">
+            <field name="name">movies inherit</field>
+            <field name="model">movies.movies</field>
+            <field name="inherit_id" ref="movies.form"/>
+            <field name="arch" type="xml">
+                <field name="ticket" position="after">
+                    <field name="price"/>
+                    <field name="count"/>
+                    <field name="total"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="category.action_form">
+            <field name="name">category form window</field>
+            <field name="res_model">category.category</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="category.form"/>
+        </record>
+
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="category.action_window">
+            <field name="name">category window</field>
+            <field name="res_model">category.category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- Top menu item -->
+
+        <menuitem name="category" id="category.menu_root"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="Menu 1" id="category.menu_1" parent="category.menu_root"/>
+        <menuitem name="Menu 2" id="category.menu_2" parent="category.menu_root"/>
+
+        <!-- actions -->
+
+        <menuitem name="List" id="category.menu_1_list" parent="category.menu_1"
+                  action="category.action_window"/>
+    </data>
+</odoo>

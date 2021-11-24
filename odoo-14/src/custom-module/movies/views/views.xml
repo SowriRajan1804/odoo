@@ -1,0 +1,157 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="movies.list">
+            <field name="name">Movies list</field>
+            <field name="model">movies.movies</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="actor"/>
+                    <field name="actress"/>
+                    <field name="part"/>
+                    <field name="time"/>
+                </tree>
+            </field>
+        </record>
+<!--        Form View-->
+        <record model="ir.ui.view" id="movies.form">
+            <field name="name">Movies form</field>
+            <field name="model">movies.movies</field>
+            <field name="arch" type="xml">
+                <form>
+<!--                    <header>-->
+<!--                        <button name="confirm" type="object" string="Confirm"/>-->
+<!--                    </header>-->
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="part"/>
+                                <field name="actor"/>
+                                <field name="actress"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="time"/>
+                                <field name="about"/>
+                            </group>
+                        </group>
+                        <group>
+                            <div align="center">
+                                <button name="confirm" type="object" string="Confirm" style="background-color:red"/>
+                            </div>
+
+                        </group>
+                        <notebook>
+                            <page string="Info" name="info_id">
+                                <group>
+                                    <field name="budget"/>
+                                    <field name="director"/>
+                                </group>
+                            </page>
+                            <page string="Category" name="category_id">
+                                <group>
+                                    <field name="category"/>
+                                </group>
+                            </page>
+                            <page string="Ticket" name="ticket_id">
+                                <group>
+                                    <field name="ticket"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+                </form>
+            </field>
+        </record>
+
+        <!--        Search View    -->
+        <record model="ir.ui.view" id="movies.search">
+            <field name="name">Movies search</field>
+            <field name="model">movies.movies</field>
+            <field name="arch" type="xml">
+                <search string="Search View">
+                    <field name="name"
+                           filter_domain="['|',('name', 'ilike', self),('actor', 'ilike', self),('actress', 'ilike', self),('about', 'ilike', self)]"/>
+                    <field name="actor"/>
+                    <field name="actress"/>
+                    <field name="about"/>
+                    <filter name="time" domain="[('time','>','120')]"/>
+                    <filter name="actor" context="{'group_by':'actor'}"/>
+                    <filter name="actor" context="{'group_by':'actress'}"/>
+                </search>
+            </field>
+        </record>
+
+<!--        Kanban View-->
+        <record model="ir.ui.view" id="movies.kanban">
+            <field name="name">Movies Kanban</field>
+            <field name="model">movies.movies</field>
+            <field name="arch" type="xml">
+                <kanban class="kanban_main">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="kanban_view_box">
+                                <div class="kanban_title">
+                                    <strong class="kanban_title_field">
+                                        <field name="name"/>
+                                    </strong>
+                                </div>
+                                <div>
+                                    <field name="actor"/>
+                                </div>
+                                <div>
+                                    <field name="actress"/>
+                                </div>
+                                <div>
+                                    <field name="about"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="movies.action_window">
+            <field name="name">Movies window</field>
+            <field name="res_model">movies.movies</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="movies_form_window">
+            <field name="name">Movies form window</field>
+            <field name="res_model">movies.movies</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="movies.form"/>
+        </record>
+
+
+        <!-- Top menu item -->
+
+        <menuitem name="Movies" id="movies.menu_root"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="Menu 1" id="movies.menu_1" parent="movies.menu_root"/>
+        <menuitem name="Menu 2" id="movies.menu_2" parent="movies.menu_root"/>
+
+        <!-- actions -->
+
+        <menuitem name="Movies List" id="movies.menu_1_list" parent="movies.menu_1"
+                  action="movies.action_window"/>
+        <menuitem name="Category" id="movies" parent="movies.menu_2"
+                  action="category.action_window"/>
+
+    </data>
+</odoo>
