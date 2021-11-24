@@ -1,0 +1,105 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="hospital.list">
+            <field name="name">Hospital list</field>
+            <field name="model">hospital.hospital</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="doc_reg_no"/>
+                    <field name="department"/>
+                    <field name="dob"/>
+                    <field name="doc_age"/>
+                    <field name="patients"/>
+                    <field name="sale"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    form view-->
+
+        <record model="ir.ui.view" id="hospital.form">
+            <field name="name">Hospital list</field>
+            <field name="model">hospital.hospital</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="doc_reg_no"/>
+                            <field name="department"/>
+                            <field name="dob"/>
+                            <field name="doc_age"/>
+                            <field name="patients"/>
+                            <field name="sale"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--    search view-->
+
+        <record model="ir.ui.view" id="search">
+            <field name="name">search</field>
+            <field name="model">hospital.hospital</field>
+            <field name="arch" type="xml">
+                <search>
+                    <filter name="age" domain="[('doc_age','=',23)]"/>
+                    <group>
+                        <filter name="age" context="{'group_by':'doc_age'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="hospital.action_window">
+            <field name="name">Hospital window</field>
+            <field name="res_model">hospital.hospital</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!--        form action-->
+        <record model="ir.actions.act_window" id="hospital.action_door">
+            <field name="name">Hospital door</field>
+            <field name="res_model">hospital.hospital</field>
+            <field name="view_mode">form</field>
+        </record>
+
+        <!-- server action to the one above -->
+
+        <!--    <record model="ir.actions.server" id="hospital.action_server">-->
+        <!--      <field name="name">Hospital server</field>-->
+        <!--      <field name="model_id" ref="model_hospital_hospital"/>-->
+        <!--      <field name="state">code</field>-->
+        <!--      <field name="code">-->
+        <!--        action = {-->
+        <!--          "type": "ir.actions.act_window",-->
+        <!--          "view_mode": "tree,form",-->
+        <!--          "res_model": model._name,-->
+        <!--        }-->
+        <!--      </field>-->
+        <!--    </record>-->
+
+
+        <!-- Top menu item -->
+
+        <menuitem name="Hospital" id="hospital.menu_root"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="Menu 1" id="hospital.menu_1" parent="hospital.menu_root"/>
+        <menuitem name="Menu 2" id="hospital.menu_2" parent="hospital.menu_root"/>
+
+        <!-- actions -->
+
+        <menuitem name="Doctor List" id="hospital.menu_1_list" parent="hospital.menu_1"
+                  action="hospital.action_window"/>
+        <menuitem name="Patient List" id="hospital" parent="hospital.menu_2"
+                  action="patients.action_window"/>
+
+    </data>
+</odoo>
