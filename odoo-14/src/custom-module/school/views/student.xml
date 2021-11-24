@@ -1,0 +1,49 @@
+<odoo>
+    <data>
+        <?xml-stylesheet type="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"?>
+
+        <record model="ir.ui.view" id="school.student_tree">
+            <field name="name">student list</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+
+                <tree>
+                    <field name="name"/>
+                    <field name="tamil"/>
+                    <field name="english"/>
+                    <field name="maths"/>
+                    <field name="science"/>
+                    <field name="social"/>
+                    <field name="total"/>
+                    <button name="%(school.student_mark_wizards)d"  type ="action" string="Edit" class="btn btn-success btn-lg "/>
+
+                    <button name="delete_method"  type ="object" string="Delete" class="btn btn-danger btn-lg "/>
+
+
+
+                </tree>
+            </field>
+
+        </record>
+    <record model="ir.ui.view" id="school.student_form">
+        <field name="name">student list</field>
+        <field name="model">school.edit</field>
+        <field name="arch" type="xml">
+
+            <form>
+               <group>
+                    <field name="name"/>
+                    <field name="tamil"/>
+                    <field name="english"/>
+                    <field name="maths"/>
+                    <field name="science"/>
+                    <field name="social"/>
+                    <field name="total"/>
+
+               </group>
+
+            </form>
+        </field>
+    </record>
+    </data>
+</odoo>

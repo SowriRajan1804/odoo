@@ -1,0 +1,93 @@
+<odoo>
+    <data>
+        <?xml-stylesheet type="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"?>
+
+
+        <record model="ir.ui.view" id="school.staff_form">
+            <field name="name">Staff list</field>
+            <field name="model">school.staff</field>
+            <field name="arch" type="xml">
+                <form class="form">
+
+
+                    <sheet  style="background-color:red">
+                        <header>
+                            <button name="create_method"   type ="object"  string="Closkjke" class="btn btn-success btn-lg"/>
+                        </header>
+
+                        <group>
+                            <group>
+                                <field   name="name"/>
+                                <field name="work"/>
+                                <div class="alert alert-primary" role="alert">
+                                    This is a primary alert—check it out!
+                                </div>
+
+                            </group>
+                            <group>
+                                <field name="salary"/>
+                                <div style="background-color:red">
+
+                                    <field name="subject" style="background-color:red"/>
+                                </div>
+                            </group>
+
+                            <group>
+                                <field name="perform"/>
+                                <field name="status"/>
+                            </group>
+                            <group>
+                                <field name="img" widget='image'/>
+                                <field name="age" />
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="school.staff_tree">
+            <field name="name">Staff list</field>
+            <field name="model">school.staff</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="work"/>
+                    <field name="salary"/>
+                    <field name="subject"/>
+                    <field name="perform"/>
+                    <field name="status"/>
+                    <field name="img" widget='image'/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="school_staff_kanban">
+            <field name="name">staff list</field>
+            <field name="model">school.staff</field>
+            <field name="arch" type="xml">
+                <kanban >
+                    <!--                    <field name="name"/>-->
+                    <!--                    <field name="value"/>-->
+                    <field name="name"/>
+                    <field name="work"/>
+                    <field name="salary"/>
+                    <field name="subject"/>
+                    <field name="perform"/>
+                    <field name="status"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="kanban_view_box ">
+                                <span t-esc="record.name.raw_value"/>
+                                <div>
+                                    <span t-esc="record.status.raw_value"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>

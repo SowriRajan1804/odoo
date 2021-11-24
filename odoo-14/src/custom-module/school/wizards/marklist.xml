@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+ <data>
+     <record model="ir.ui.view" id="school.student_wizards">
+            <field name="name">student list</field>
+            <field name="model">school.wizards</field>
+            <field name="arch" type="xml">
+
+                <form>
+                   <group>
+                        <field name="name" />
+
+
+                   </group>
+
+                </form>
+            </field>
+        </record>
+
+ </data>
+</odoo>
