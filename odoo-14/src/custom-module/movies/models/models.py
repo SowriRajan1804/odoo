@@ -13,7 +13,7 @@ class movies(models.Model):
     actress = fields.Char(string="Actress")
     date = fields.Date(string="Release Date")
     time = fields.Integer(string="Duration in Minutes",required=1)
-    about = fields.Text(string="Storyline")
+    abouts = fields.Text(string="Storyline")
     part = fields.Selection([('one','1'),('two','2'),('three','3'),('four','4'),('five','5')])
     ticket = fields.Selection([('silver','Silver'),('gold','Gold'),('diamond','Diamond'),('platinum','Platinum')],string="Ticket_Type")
     budget = fields.Char(string="Budget")
