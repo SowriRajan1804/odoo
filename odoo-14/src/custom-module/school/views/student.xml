@@ -15,7 +15,7 @@
                     <field name="science"/>
                     <field name="social"/>
                     <field name="total"/>
-                    <button name="%(school.student_mark_wizards)d"  type ="action" string="Edit" class="btn btn-success btn-lg "/>
+                    <button name="%(school.student_mark_wizards)d"  type ="action" string="Edit" class="btn btn-success btn-lg " groups="school.new"/>
 
                     <button name="delete_method"  type ="object" string="Delete" class="btn btn-danger btn-lg "/>
 

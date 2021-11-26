@@ -25,11 +25,12 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/views.xml',
-        'wizards/marklist.xml',
+        #'views/views.xml',
+        #'wizards/marklist.xml',
         'views/templates.xml',
         'views/staff.xml',
-        'views/student.xml',
+        # 'views/student.xml',
+        'security/securityxml.xml'
 
 
     ],

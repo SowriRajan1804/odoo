@@ -61,7 +61,7 @@ class HospitalAppointment(models.Model):
             self.note = ''
 
     def unlink(self):
-        if self.state == 'done':
+        if self.state == 'dopythone':
             raise ValidationError(_("You Cannot Delete %s as it is in Done State" % self.name))
         return super(HospitalAppointment, self).unlink()
 

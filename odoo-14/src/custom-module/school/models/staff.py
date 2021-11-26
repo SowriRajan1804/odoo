@@ -7,6 +7,7 @@ class staff(models.Model):
     _description = 'school.staff'
 
     name = fields.Char()
+
     work=fields.Selection([
             ('teach', 'Teaching'),
             ('non_teach', 'Non_Teaching'),
