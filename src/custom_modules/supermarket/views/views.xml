@@ -21,35 +21,51 @@
         </tree>
       </field>
     </record>
-    <!-- <record model="ir.ui.view" id="supermarket.kanban">
+    <record model="ir.ui.view" id="supermarket.kanban">
       <field name="name">supermarket kanban</field>
       <field name="model">supermarket.supermarket</field>
       <field name="arch" type="xml">
         <kanban>
-          <field name="id"/>
-          <field name="name"/>
-          <field name="gender"/>
-          <fields name="image"/>
+          <templates>
+            <t t-name="kanban-box">
+                <div t-attf-class="kanban_view_box">
+                    <div class="kanban_title">
+                        <strong class="kanban_title_field">
+                            <field name="name"/>
+                        </strong>
+                    </div>
+                    <div>
+                        <field name="gender"/>
+                    </div>
+                    <div>
+                        <field name="age"/>
+                    </div>
+                    <div>
+                        <field name="amount"/>
+                    </div>
+                </div>
+            </t>
+        </templates>
           
           
         </kanban>
       </field>
-    </record> -->
+    </record>
     <record model="ir.ui.view" id="supermarket.form">
       <field name="name">supermarket form</field>
       <field name="model">supermarket.supermarket</field>
       <field name="arch" type="xml">
         <form>
         <header>
-        <button string="submit" type="object" name="submit"/>
+        <button string="submit" type="object" name="submit" group="supermarket.new"/>
         <!-- <button name="print_report" type="object" string="Print" class="oe_highlight"/> -->
         </header>
           <sheet>
-            <field name="image" widget="image" class="oe_avatar"/>
+            <field name="image" widget="image" class="oe_avatar" />
             <group>
               <group>
-                <field name="id"/>
-                <field name="name"/>
+                
+                <field name="name" />
 
                 <field name="cost_id"/>
 
@@ -107,7 +123,7 @@
           <field name="value2"/>
           <field name="amount"/>
           <field name="grandtotal"/>
-          <filter string="Sathishkana" name="sathishkana" domain="['|',('name','=','sathishkana')]"/>
+          <filter string="Sathishkana" name="sathishkana" domain="[('name','=','sathishkana')]"/>
           <filter string="Age" name="age" domain="[('age','>=',18)]"/>
           <group>
             <filter string="Age" name="age" context="{'group_by':'age'}"/>

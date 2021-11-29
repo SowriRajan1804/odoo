@@ -9,7 +9,7 @@ class supermarket(models.Model):
     _description = 'supermarket.supermarket'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(groups="supermarket.new")
+    name = fields.Char()
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female'),
@@ -21,12 +21,13 @@ class supermarket(models.Model):
     value2 = fields.Float(compute="_value_pc", store=True, tracking=True)
     description = fields.Text(tracking=True)
     cost_id = fields.Many2one("res.partner", string="cost", tracking=True)
-    value3_ids = fields.Many2many( "student.student", string="value3", tracking=True)
+    value3_ids = fields.Many2many(
+        "student.student", string="value3", tracking=True)
     amount = fields.Integer(tracking=True)
-    grandtotal = fields.Integer(compute="_Offer_calculation", store=True, default="", tracking=True)
+    grandtotal = fields.Integer(
+        compute="_Offer_calculation", store=True, default="", tracking=True)
     image = fields.Binary(string="Supermarket image")
-    simple = fields.Char(string ="Simple")
-    
+    simple = fields.Char(string="Simple")
 
     @api.constrains('age')
     def SimpleCalculation(self):
@@ -46,13 +47,10 @@ class supermarket(models.Model):
     def _value_pc(self):
         for record in self:
             record.value2 = float(record.value) / 100
-    
+
     # @api.multi
     # def print_report(self):
     #     return self.env.ref('supermarket.supermarket.report_supermarket') .report_action(self)
-
-      
-
 
     def submit(self):
         for record in self:
