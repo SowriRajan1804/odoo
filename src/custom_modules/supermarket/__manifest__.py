@@ -31,6 +31,7 @@
         'views/sale_order.xml',
         'reports/reports.xml',
         'reports/report_supermarket.xml',
+        'reports/sale_order_inherit_report.xml',
         'security/security.xml',
         
     ],

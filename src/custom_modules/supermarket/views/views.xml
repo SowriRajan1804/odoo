@@ -57,7 +57,8 @@
       <field name="arch" type="xml">
         <form>
         <header>
-        <button string="submit" type="object" name="submit" group="supermarket.new"/>
+        <button string="submit" type="object" name="submit" group="new"/>
+        <field name="state" widget="statusbar" statusbar_visible="draft,posted"/>
         <!-- <button name="print_report" type="object" string="Print" class="oe_highlight"/> -->
         </header>
           <sheet>

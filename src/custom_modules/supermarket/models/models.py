@@ -15,6 +15,13 @@ class supermarket(models.Model):
         ('female', 'Female'),
         ('other', 'Other'),
     ], string="Gender", tracking=True)
+    state = fields.Selection([
+        ('draft', 'Quotation'),
+        ('sent', 'Quotation Sent'),
+        ('sale', 'Sales Order'),
+        ('done', 'Locked'),
+        ('cancel', 'Cancelled'),
+    ], string='Status')
     # country =fields.Many2one('res.country')
     value = fields.Integer(tracking=True)
     age = fields.Integer(tracking=True)
