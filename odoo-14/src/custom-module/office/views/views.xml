@@ -1,0 +1,113 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="office.list">
+      <field name="name">list</field>
+      <field name="model">office.office</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="first_name" />
+          <field name="last_name" />
+          <field name="employee_id" />
+          <field name="department" />
+          <field name="job_title" />
+          <field name="work_shift" />
+          <field name="age" />
+          <field name="location" />
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- explicit form view definition -->
+
+    <record model="ir.ui.view" id="office.form">
+      <field name="name">form</field>
+      <field name="model">office.office</field>
+      <field name="arch" type="xml">
+        <form>
+            <sheet>
+              <group>
+              <group>
+                <field name="employee_id" />
+                <field name="first_name" />
+                <field name="last_name" />
+                <field name="email" />
+                <field name="department" />
+              </group>
+              <notebook>
+                <page string="additional information">
+                  <group>
+                    <field name="job_title" />
+                    <field name="location" />
+                    <field name="salary" />
+                    <field name="date_of_birth" />
+                    <field name="age" />
+                    <field name="marital_status" />
+                  </group>
+                </page>
+                <page string="contact information">
+                  <group>
+                    <field name="mobile_number" />
+                  </group>
+                </page>
+                <page string="address information">
+                  <group>
+                    <field name="permanent_address" />
+                    <field name="city" />
+                    <field name="state" />
+                    <field name="pincode" />
+                    <field name="country" />
+                  </group>
+                </page>
+              </notebook>
+              </group>
+            </sheet>
+        </form>
+      </field>
+    </record> -->
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="office.action_window">
+      <field name="name">office window</field>
+      <field name="res_model">office.office</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+    <record model="ir.actions.server" id="office.action_server">
+      <field name="name">office server</field>
+      <field name="model_id" ref="model_office_office" />
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="office" id="office.menu_root" />
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="office.menu_1" parent="office.menu_root" />
+    <menuitem name="Menu 2" id="office.menu_2" parent="office.menu_root" />
+
+    <!-- actions -->
+
+    <menuitem name="List" id="office.menu_1_list" parent="office.menu_1" action="office.action_window" />
+    <menuitem name="Server to list" id="office" parent="office.menu_2" action="office.action_server" />
+
+  </data>
+</odoo>
