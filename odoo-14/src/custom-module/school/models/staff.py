@@ -1,7 +1,7 @@
 from odoo import models, fields, api
 import datetime
 
-
+qsadasd
 class staff(models.Model):
     _name = 'school.staff'
     _description = 'school.staff'
