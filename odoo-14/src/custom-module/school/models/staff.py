@@ -44,5 +44,5 @@ class staff(models.Model):
 
             record.status=record.age.year
 
-
+hasgdjkasdas
 
