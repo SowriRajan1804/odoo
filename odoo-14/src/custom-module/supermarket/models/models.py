@@ -42,18 +42,6 @@ class supermarket(models.Model):
                     record.grandtotal = int(record.amount) / 2
         return record.grandtotal
 
-
-
-          
-
-
-
-
-
-
-
-
-
     @api.depends('value')
     def _value_pc(self):
         for record in self:
